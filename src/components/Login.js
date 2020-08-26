@@ -17,13 +17,14 @@ export class Login extends React.Component{
         super(props);
         localStorage.setItem('username', 'eocampo');
         localStorage.setItem('password', '123');
+        localStorage.setItem('isLoggedIn',"false");
       }
 
     logIn(){
         let username = document.getElementById("email").value;
         let password = document.getElementById("password").value;
         if (localStorage.getItem("username") ===  username && localStorage.getItem("password") === password){
-          localStorage.setItem('isLogginIn', "true");
+          localStorage.setItem('isLoggedIn', "true");
         }
         console.log(this.state.isLoggedIn);
       }

@@ -11,14 +11,15 @@ class App extends Component {
 
     
 
-    constructor(props) {
+    constructor(props) {        
         super(props);
+
         this.state = {isLoggedIn: false}
-        localStorage.setItem("isLoggedIn","false");
     }
 
 
     render() {
+        
         const LoginView = () => (
             <Login/>
         );
@@ -39,14 +40,14 @@ class App extends Component {
                     <br/>
 
                     <ul>
-                        {<li><Link to="/">Login</Link></li>}
+                        {!localStorage.getItem("isLoggedIn") && (<li><Link to="/">Login</Link></li>)}
                         {localStorage.getItem("isLoggedIn") && (<li><Link to="/todo">Todo</Link></li>)}
                     </ul>
 
-                    <div>
-                        {<Route exact path="/" component={LoginView}/>}
-                        {localStorage.getItem("isLoggedIn") && (<Route path="/todo" component={TodoAppView}/>)}
-                    </div>
+                    <ul>
+                        {!localStorage.getItem("isLoggedIn") && (<Route exact path="/" component={LoginView}/>)}
+                        {localStorage.getItem("isLoggedIn") && (<Route exact path="/todo" component={TodoAppView}/>)}
+                    </ul>
                 </div>
             </Router>
         );

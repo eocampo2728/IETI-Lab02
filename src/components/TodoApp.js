@@ -4,6 +4,7 @@ import {TodoList} from "./TodoList";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from "moment";
+import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
 
 export class TodoApp extends Component {
     constructor(props) {
@@ -56,8 +57,9 @@ export class TodoApp extends Component {
     
     render(){
         return(
-            <div>
-                <form onSubmit={this.handleSubmit} className="todo-form">
+            <Router>
+                <div className="todo">
+                    <form onSubmit={this.handleSubmit} className="todo-form">
                         <h3>New TODO</h3>
                         <label htmlFor="text" className="right-margin">
                             Text:
@@ -98,7 +100,8 @@ export class TodoApp extends Component {
                     <br/>
                     <br/>
                     <TodoList todoList={this.state.items}/>
-            </div>
+                </div>
+            </Router>
         
         );
     }
